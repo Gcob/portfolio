@@ -12,36 +12,54 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
+use AppBundle\Resources\restClasses\AppResponse;
+use AppBundle\Resources\restClasses\AppError;
+
 
 class DefaultController extends FOSRestController
 {
-    /**
-     * @Rest\Get("/user")
-     */
-    public function getUserAction (Request $request)
-    {
-		$values = [
-			[
-				'id' => 1,
-				'username' => 'Jacob',
-				'email' => 'jacobproulx@gmail.com',
-			],
-			[
-				'id' => 2,
-				'username' => 'Alex',
-				'email' => 'alexlapointe@gmail.com',
-			],
-		];
-		
-		return $values;
-	}
 	
 	/**
-     * @Rest\Post("/user/")
-     */
-    public function postUserAction (Request $request)
+	 * @Rest\Get(
+	 * 	"/page-content/{_locale}/{pagename}", 
+	 * 	requirements={
+	 * 	 "_locale": "en|fr"
+	 * 	}
+	 * )
+	 */
+
+    public function getPageContentByLangAndPageNameAction (Request $request, $_locale, $pagename)
     {
-		return new View("User Added Successfully", Response::HTTP_OK);
+		$appError = new AppError('');
+		$data = array();
+		
+		$page = $this->getDoctrine()
+			->getRepository('AppBundle:Page')
+			->findOneBy(array('pagename' => $pagename))
+		;
+		
+		if($page)
+		{
+			//Il reste a trouve le moyen (avec les query builder) de retourner les contenu sams leurs locals ni leurs pages (car c'est redondant pour rien)
+			$contents = $this->getDoctrine()
+				->getRepository('AppBundle:PageContent')
+				->findBy(array('locale' => $_locale, 'page' => $page))
+			;
+			
+			$data = array(
+				'page' => $page,
+				'locale' => $_locale,
+				'contents' => $contents
+			);
+		}
+		else
+		{
+			$appError->setMessage('Page '.$pagename.' not found');
+		}
+		
+		$appResponse = new AppResponse($data, $appError);
+		
+		return $appResponse->getResponse();
 	}
 	
 	
@@ -51,7 +69,12 @@ class DefaultController extends FOSRestController
      */
     public function emptyarrayAction(Request $request, $others = null)
     {	
-		return ['error' => '404'];
+		return [
+			'response' => [
+				'code' => 404,
+				'description' => 'Route not found'
+			]
+		];
     }
 }
 
