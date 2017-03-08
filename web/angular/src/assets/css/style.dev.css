@@ -1302,9 +1302,6 @@
 .navbar.fixed .lang a i {
   opacity: 0;
 }
-.navbar.fixed ul.main > li {
-  font-size: 0.75em;
-}
 .navbar.fixed ul.main > li > a {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -1456,6 +1453,7 @@
 .navbar ul.main > li#logo {
   animation-duration: 1s;
   animation-fill-mode: both;
+  top: 0px;
 }
 .navbar ul.main > li#logo:hover {
   animation-name: pulse;
