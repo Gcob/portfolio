@@ -43,7 +43,7 @@ class DefaultController extends FOSRestController
 			//Il reste a trouve le moyen (avec les query builder) de retourner les contenu sams leurs locals ni leurs pages (car c'est redondant pour rien)
 			$contents = $this->getDoctrine()
 				->getRepository('AppBundle:PageContent')
-				->findBy(array('locale' => $_locale, 'page' => $page))
+				->findByLangAndPageWithoutReturningThem($_locale, $page)
 			;
 			
 			$data = array(
@@ -69,12 +69,11 @@ class DefaultController extends FOSRestController
      */
     public function emptyarrayAction(Request $request, $others = null)
     {	
-		return [
-			'response' => [
-				'code' => 404,
-				'description' => 'Route not found'
-			]
-		];
+		$appError = new AppError('Route not found', 404);
+		$data = array();
+		$appResponse = new AppResponse($data, $appError);
+		
+		return $appResponse->getResponse();
     }
 }
 

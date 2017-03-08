@@ -5,12 +5,14 @@ namespace AppBundle\Resources\restClasses;
 class AppError
 {
 	private $message;
+	private $code;
 	
 	//Class functions
 	
-	public function __construct ($message)
+	public function __construct ($message, $code='')
 	{		
 		$this->message = $message;
+		$this->code = $code;
 	}
 	
 	public function setMessage ($message)
@@ -20,10 +22,17 @@ class AppError
 	
 	public function getError ()
 	{
-		$message = (!empty($this->message))? array('message' => $this->message) : '';
+		$errorFormated = array();
 		
-		return [
-			$message
-		];
+		if(!empty($this->message))
+		{
+			$errorFormated['message'] = $this->message;
+		}
+		if(!empty($this->code))
+		{
+			$errorFormated['code'] = $this->code;
+		}
+		
+		return $errorFormated;
 	}
 }

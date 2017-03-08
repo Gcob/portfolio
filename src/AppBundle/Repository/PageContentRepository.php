@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Page;
+
 /**
  * PageContentRepository
  *
@@ -10,4 +12,19 @@ namespace AppBundle\Repository;
  */
 class PageContentRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findByLangAndPageWithoutReturningThem($locale, Page $page)
+	{
+		$qb = $this->createQueryBuilder('pc');
+
+		$qb
+			->select('pc.varname, pc.content')
+			->where('pc.page = :page')->setParameter('page', $page)
+			->andWhere('pc.locale = :locale')->setParameter('locale', $locale)
+		;
+		
+		return $qb
+			->getQuery()
+			->getResult()
+		;
+	}
 }

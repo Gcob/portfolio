@@ -57,8 +57,15 @@ module.exports = function(grunt) {
 		
 		cssmin: {
 			production: {
-				src: '../angular/src/assets/css/style.prod.css',
-				dest: '../angular/src/assets/css/style.prod.min.css',
+				expand: true,
+				cwd: '../angular/src/assets/css/',
+				src: ['*.css', '!*.min.css'],
+				dest: '../angular/src/assets/css/',
+				ext: '.min.css',
+				extDot: 'first'
+				//dest: '../angular/src/assets/css',
+				//src: '../angular/src/assets/css/style.prod.css',
+				//dest: '../angular/src/assets/css/style.prod.min.css',
 			}
 		},
 		
@@ -84,6 +91,7 @@ module.exports = function(grunt) {
 	//tasks
 	//grunt.registerTask('minifySvg', ['svgmin']);
 	grunt.registerTask('compileCss', lessTasks);
+	grunt.registerTask('minifyCss', ['autoprefixer', 'cssmin']);
 	grunt.registerTask('autoCompileCss', ['watch']);
 	
 	
