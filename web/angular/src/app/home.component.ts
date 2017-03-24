@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit  {
     constructor(private _contentService: ContentService, private _route: ActivatedRoute) {}
 
     ngOnInit() {
-        var lang = this._route.snapshot.data.locale;
+        var lang:string = this._route.snapshot.data['locale'];
         this._contentService.loadPageContent(lang, 'home')
             .subscribe(res => {
                 this.text = res;

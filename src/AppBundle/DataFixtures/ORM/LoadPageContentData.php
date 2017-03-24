@@ -36,6 +36,31 @@ class LoadUserData implements FixtureInterface
 					'en' => 'Make yourself comfortable and do not hesitate to take a look at my collection or get in touch with me.'
 				],
 			],
+			'apropos' => [
+				'title'=>[
+					'fr' => 'À propos de moi',
+					'en' => 'About me'
+				],
+			],
+			'projets' => [
+				'title'=>[
+					'fr' => 'Voici la liste des projets don je suis fière!',
+					'en' => 'Here is my favorites projects that I\'ve done so far'
+				],
+			],
+			'projet' => [
+				'title'=>[
+					'fr' => '...',
+					'en' => '...'
+				],
+			],
+			'joindre' => [
+				'title'=>[
+					'fr' => 'Pour me joindre, vous êtes à la bonne place!',
+					'en' => 'To get in touch, you are on the right page!'
+				],
+			],
+			
 		];
 		
 		foreach($pageContents as $pagename => $varnames)

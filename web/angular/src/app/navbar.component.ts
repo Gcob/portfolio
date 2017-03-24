@@ -23,9 +23,16 @@ constructor(@Inject(DOCUMENT) private document: Document, private _router: Route
     }
   }
 
-  pageUrl(lang)
+  pageUrl(lang:string)
   {
     return '/' + lang + this._router.url.slice(3);
+  }
+
+  getLocale()
+  {
+    var lang = this._router.url.substring(1,3);
+    lang = (lang)?lang:'fr';
+    return lang
   }
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
 
+
 import { AppComponent }  from './app.component';
 import { AproposComponent }  from './apropos.component';
 import { ProjetsComponent }  from './projets.component';
@@ -18,7 +19,7 @@ const appRoutes: Routes = [
   { path: 'fr',           component: HomeComponent,   pathMatch: 'full',  data: { locale: 'fr' }},
   { path: 'fr/a-propos',  component: AproposComponent,pathMatch: 'full',  data: { locale: 'fr' } },
   { path: 'fr/projets',   component: ProjetsComponent,pathMatch: 'full',  data: { locale: 'fr' } },
-  { path: 'fr/joindre',   component: JoindreComponent,pathMatch: 'full',  data: { locale: 'fr' } }
+  { path: 'fr/joindre',   component: JoindreComponent,pathMatch: 'full',  data: { locale: 'fr' } },
 
   { path: 'en',           component: HomeComponent,   pathMatch: 'full',  data: { locale: 'en' }},
   { path: 'en/a-propos',  component: AproposComponent,pathMatch: 'full',  data: { locale: 'en' } },
@@ -31,8 +32,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
-    JsonpModule,
-    
+    JsonpModule
   ],
   declarations: [ 
     AppComponent, 

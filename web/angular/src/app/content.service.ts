@@ -24,11 +24,10 @@ export class ContentService {
         }
         else
         {
-            return new Observable(observer => {
+          new Observable()
+            return new Observable((observer:any) => {
                 observer.next(ContentService.Texts[locale][pageName]);
             });
         }
-
-        
     }
 }
