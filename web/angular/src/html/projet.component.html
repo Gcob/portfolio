@@ -1,0 +1,6 @@
+<div id="projet" class="container">
+    <h1 [ngClass]="{'loadingtext': isLoading}" >
+        <span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>
+        {{ text.title }}
+    </h1>
+</div>

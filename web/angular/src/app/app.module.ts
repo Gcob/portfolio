@@ -19,6 +19,11 @@ const appRoutes: Routes = [
   { path: 'fr/a-propos',  component: AproposComponent,pathMatch: 'full',  data: { locale: 'fr' } },
   { path: 'fr/projets',   component: ProjetsComponent,pathMatch: 'full',  data: { locale: 'fr' } },
   { path: 'fr/joindre',   component: JoindreComponent,pathMatch: 'full',  data: { locale: 'fr' } }
+
+  { path: 'en',           component: HomeComponent,   pathMatch: 'full',  data: { locale: 'en' }},
+  { path: 'en/a-propos',  component: AproposComponent,pathMatch: 'full',  data: { locale: 'en' } },
+  { path: 'en/projets',   component: ProjetsComponent,pathMatch: 'full',  data: { locale: 'en' } },
+  { path: 'en/joindre',   component: JoindreComponent,pathMatch: 'full',  data: { locale: 'en' } }
 ];
 
 @NgModule({
