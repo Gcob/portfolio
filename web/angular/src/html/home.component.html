@@ -7,8 +7,11 @@
         <span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>
         {{ text.subtitle }}
     </h2>
+	<hr />
     <p [ngClass]="{'loadingtext': isLoading}">
         <span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>
         {{ text.textes1 }}
     </p>
+	
+	
 </div>

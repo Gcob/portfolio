@@ -61,6 +61,56 @@ class DefaultController extends FOSRestController
 		return $data;
 	}
 	
+	/**
+	 * @Rest\Get(
+	 * 	"/projets/{_locale}", 
+	 * 	requirements={
+	 * 	 "_locale": "en|fr"
+	 * 	}
+	 * )
+	 */
+
+    public function getPageProjetsAction (Request $request, $_locale)
+    {
+		header('Access-Control-Allow-Origin: *');//lol, what a glitch
+		
+		$data = array();
+		
+		$projets = $this->getDoctrine()
+			->getRepository('AppBundle:Projet')
+			->findAll()
+		;
+		
+		if($projets)
+		{
+			//Il reste a trouve le moyen (avec les query builder) de retourner les contenu sams leurs locals ni leurs pages (car c'est redondant pour rien)
+			$contents = $this->getDoctrine()
+				->getRepository('AppBundle:Projet')
+				->findAll()
+			;
+			
+			foreach($projets as $projet)
+			{
+				$values = array(
+					"url" => $projet->getUrl(),
+					"image" => $projet->getImage(),
+					"title" => $projet->getTitle(),
+					"title_en" => $projet->gettitleEn(),
+					"description" => $projet->getDescription(),
+					"description_en" => $projet->getDescriptionEn(),
+				);
+				array_push($data, $values);
+			}
+			
+		}
+		else
+		{
+			$appError->setMessage('Aucun projets trouvé...');
+		}
+		
+		return $data;
+	}
+	
 	
 	/**
 	 * @Route("/", name="emptyarray")

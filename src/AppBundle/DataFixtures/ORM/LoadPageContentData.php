@@ -44,7 +44,7 @@ class LoadUserData implements FixtureInterface
 			],
 			'projets' => [
 				'title'=>[
-					'fr' => 'Voici la liste des projets don je suis fière!',
+					'fr' => 'Voici la liste des projets dont je suis fière!',
 					'en' => 'Here is my favorites projects that I\'ve done so far'
 				],
 			],

@@ -1,0 +1,75 @@
+#projets{
+	.projet{
+		
+		width:90%;
+		margin: 10px auto;
+		
+		
+		a{
+			
+			display: block;
+			text-decoration: none;
+			margin:10px 0;
+			
+			&:hover{
+				margin:7.5px 0;
+				
+				.media-left{
+					div{
+						background:rgba(0,0,0,0.15);
+						width:100%;
+					}
+					img{
+						height: 105px;
+					}
+				}
+				.media-body{
+					padding-left: 20px;
+				}
+				
+			}
+		}
+		h3{
+			color: @color3;
+			margin: 0;
+		}
+		h4{
+			color: @color2;
+			font-size:1em;
+		}
+		
+		.media-left{
+			position:relative;
+			padding:0;
+			
+			
+			div{
+				position:absolute;
+				top:0;
+				left:0;
+				bottom:0;
+				right:0;
+				z-index:1;
+				width:0%;
+				overflow:hidden;
+				background:rgba(0,0,0,0);
+				display:flex;
+				flex-direction: row ;
+				justify-content: center;
+				align-items: center;
+				
+				i{
+					font-size:50px;
+					color: white;
+					opacity: 0.5;
+				}
+			}
+			img{
+				height: 100px;
+			}
+		}
+		.media-body{
+			padding-left: 10px;
+		}
+	}
+}
