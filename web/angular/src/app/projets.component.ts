@@ -14,6 +14,7 @@ import { Text } from './text';
 export class ProjetsComponent implements OnInit  {
     text = {};
     isLoading = true;
+    
 
     constructor(private _contentService: ContentService, private _route: ActivatedRoute) {}
 

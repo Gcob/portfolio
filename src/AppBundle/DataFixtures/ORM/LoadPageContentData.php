@@ -59,6 +59,31 @@ class LoadUserData implements FixtureInterface
 					'fr' => 'Pour me joindre, vous êtes à la bonne place!',
 					'en' => 'To get in touch, you are on the right page!'
 				],
+				'subtitle'=>[
+					'fr' => 'Si vous désirez obtenir plus d\'information ou pour simplement me laisser un commentaire, remplissez le formulaire ci-dessous.',
+					'en' => 'If you\'d like to obtain more information or just leave me a comment, please fill the form below.'
+				],
+				'nom'=>[
+					'fr' => 'Entrez votre nom',
+					'en' => 'Enter your name'
+				],
+				'email'=>[
+					'fr' => 'Entrez votre courriel',
+					'en' => 'Enter your email'
+				],
+				'message'=>[
+					'fr' => 'Entrez votre message',
+					'en' => 'Enter your message'
+				],
+				'submit'=>[
+					'fr' => 'Envoyer',
+					'en' => 'Send'
+				],
+				'socials'=>[
+					'fr' => 'Médias sociaux',
+					'en' => 'socials medias'
+				],
+				
 			],
 			
 		];

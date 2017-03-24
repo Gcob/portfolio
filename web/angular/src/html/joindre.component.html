@@ -3,4 +3,39 @@
         <span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>
         {{ text.title }}
     </h1>
+	<p><span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>{{ text.subtitle }}</p>
+	
+	<hr>
+	
+	<form method="post" action="{{ actionUrl }}" class="form">
+	
+		<div class="form-group">
+			<label for="name"><span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>{{ text.nom }}</label>
+			<input type="text" class="form-control " id="name" name="name" placeholder="Ex.: Jacob Proulx" required>
+		</div>
+	
+		<div class="form-group">
+			<label for="email"><span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>{{ text.email }}</label>
+			<input type="email" class="form-control" id="email" name="email" placeholder="jacobproulx@gmail.com" required>
+		</div>
+	
+		<div class="form-group">
+			<label for="email"><span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>{{ text.message }}</label>
+			<textarea  class="form-control" name="message" required></textarea> 
+		</div>
+	
+		<button type="submit" class="btn btn-primary">&nbsp;{{ text.submit }}&nbsp;</button>
+	</form>
+
+	<hr>
+	
+	<h3><span *ngIf="isLoading" ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></span>{{ text.socials }}</h3>
+	
+	<ul class="list-inline banner-social-buttons">
+		<li class="linkedin"><a href="https://www.linkedin.com/in/jacob-proulx-27880996/" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-linkedin"></i> Linkedin</a></li>
+		<li class="google"><a href="https://google.ca" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-google"></i> Google</a></li>
+		<li class="twitter"><a href="https://twitter.com/JacobProulx2" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-twitter"></i> Twitter</a></li>
+		<li class="facebook"><a href="https://www.facebook.com/jacob.proulx" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-facebook"></i> Facebook</a></li>
+	</ul>
+
 </div>

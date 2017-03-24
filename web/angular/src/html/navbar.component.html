@@ -1,17 +1,21 @@
 <section id="navbar" [ngClass]="{'fixed': navIsFixed }">
-	<div class="wrapper">
+	<div class="wrapper" >
 		<nav class="main">
 			<ul>
+				<li class="btn menu-btn" ng-click="console.log(123)"><i class="fa fa-bars" aria-hidden="true"></i></li>
 				<li id="logo" >
 					<a routerLink="/{{ getLocale() }}" >
 						<img src="assets/images/logo.png" alt="Jacob Proulx Programmeur Web Logo" />
+						<i class="fa fa-home" aria-hidden="true"></i>
+						<span *ngIf="getLocale()!='fr'"> Accueil</span>
+						<span *ngIf="getLocale()!='en'"> Home</span>
 					</a>
 				</li>
 				<li>
 					<a routerLink="/{{ getLocale() }}/a-propos" routerLinkActive="active" >
 						<i class="fa fa-user" aria-hidden="true"></i>
-						<span [hidden]="getLocale()!='fr'">À Propos</span>
-						<span [hidden]="getLocale()!='en'">About</span>
+						<span [hidden]="getLocale()=='fr'">À Propos</span>
+						<span [hidden]="getLocale()=='en'">About</span>
 					</a>
 				</li>
 				<li>

@@ -15,8 +15,7 @@ import { Text } from './text';
 export class JoindreComponent  {
     text = {};
     isLoading = true;
-    lat: number = 51.678418;
-    lng: number = 7.809007;
+    actionUrl = "/hey";
 
     constructor(private _contentService: ContentService, private _route: ActivatedRoute) {}
 
@@ -29,5 +28,6 @@ export class JoindreComponent  {
             })
         ;
 
+        
     }
 }
