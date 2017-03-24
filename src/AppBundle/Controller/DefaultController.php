@@ -30,6 +30,8 @@ class DefaultController extends FOSRestController
 
     public function getPageContentByLangAndPageNameAction (Request $request, $_locale, $pagename)
     {
+		header('Access-Control-Allow-Origin: *');//lol, what a glitch
+		
 		$appError = new AppError('');
 		$data = array();
 		
@@ -43,23 +45,20 @@ class DefaultController extends FOSRestController
 			//Il reste a trouve le moyen (avec les query builder) de retourner les contenu sams leurs locals ni leurs pages (car c'est redondant pour rien)
 			$contents = $this->getDoctrine()
 				->getRepository('AppBundle:PageContent')
-				->findByLangAndPageWithoutReturningThem($_locale, $page)
+				->findBy(array('page' => $page, 'locale' => $_locale))
 			;
 			
-			$data = array(
-				'page' => $page,
-				'locale' => $_locale,
-				'contents' => $contents
-			);
+			foreach($contents as $content)
+			{
+				$data[$content->getVarname()] = $content->getContent();
+			}
+			
 		}
 		else
 		{
 			$appError->setMessage('Page '.$pagename.' not found');
 		}
-		
-		$appResponse = new AppResponse($data, $appError);
-		
-		return $appResponse->getResponse();
+		return $data;
 	}
 	
 	
@@ -69,6 +68,8 @@ class DefaultController extends FOSRestController
      */
     public function emptyarrayAction(Request $request, $others = null)
     {	
+		header('Access-Control-Allow-Origin: *');//lol, what a glitch
+		
 		$appError = new AppError('Route not found', 404);
 		$data = array();
 		$appResponse = new AppResponse($data, $appError);

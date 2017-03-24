@@ -20,7 +20,5 @@ constructor(@Inject(DOCUMENT) private document: Document) { }
     } else if (this.navIsFixed && number < 1) {
       this.navIsFixed = false;
     }
-
-    console.log(this.navIsFixed);
   }
 }

@@ -1,0 +1,50 @@
+*{
+	box-sizing: border-box;
+	transition: all 0.4s;
+}
+
+body{
+	background: @color1;
+	font-size: 16px;
+	padding-top: 150px;
+	height:2000px;
+}
+
+nav{
+	position: relative;
+
+    ul, li, a, a>i, a>span{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+	ul{
+		margin:0;
+        padding:0;
+
+		li{
+			list-style-type: none;
+            
+            a{
+                .center();
+                padding: 10px;
+
+                i{
+                    margin-right: 5px;
+                }
+                &, i, span{
+                    text-decoration: none;
+                    
+                    &:hover, &.active{
+                        text-decoration: none;
+                    }
+                }
+            }
+		}
+	}
+}
+
+.loadingtext{
+	opacity: 0.3;
+}

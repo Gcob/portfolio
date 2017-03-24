@@ -1,56 +1,47 @@
-<nav [ngClass]="{'fixed': navIsFixed }" class="navbar">
-	<ul class="main">
-		<li id="logo" >
-			<a routerLink="/" >
-				<img src="assets/images/logo.png" alt="Jacob Proulx Programmeur Web Logo" />
-			</a>
-		</li>
-		<li>
-			<a routerLink="/a-propos" >
-				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-				<p>Qui suis-je?</p>
-				<span class="bottom"></span>
-			</a>
-		</li>
-		<li>
-			<a routerLink="/quest-ce-que-je-fais" class="active">
-				<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-				<p>Qu'est-ce que je fais?</p>
-				<span class="bottom"></span>
-			</a>
+<section id="navbar" [ngClass]="{'fixed': navIsFixed }">
+	<div class="wrapper">
+		<nav class="main">
 			<ul>
+				<li id="logo" >
+					<a routerLink="/fr" >
+						<img src="assets/images/logo.png" alt="Jacob Proulx Programmeur Web Logo" />
+					</a>
+				</li>
 				<li>
-					<a routerLinkActive="active" routerLink="/" >
+					<a routerLink="/fr/a-propos" routerLinkActive="active" >
+						<i class="fa fa-user" aria-hidden="true"></i>
+						<span>À Propos</span>
+					</a>
+				</li>
+				<li>
+					<a routerLink="/fr/projets" routerLinkActive="active" >
 						<i class="fa fa-paint-brush" aria-hidden="true"></i>
-						<p>Projets</p>
+						<span>Mes Projets</span>
 					</a>
 				</li>
 				<li>
-					<a routerLinkActive="active" routerLink="/" class="active">
-						<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-						<p>Compétences</p>
-					</a>
-				</li>
-				<li>
-					<a routerLinkActive="active" routerLink="/" >
-						<i class="fa fa-futbol-o" aria-hidden="true"></i>
-						<p>playground</p>
+					<a routerLink="/fr/joindre" routerLinkActive="active" >
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+						<span>Me Joindre</span>
 					</a>
 				</li>
 			</ul>
-		</li>
-	</ul>
-	<div class="lang">
-	
-		<a class="active" >
-			<i class="fa fa-comment-o" aria-hidden="true"></i>
-			<i class="fa fa-comment active" aria-hidden="true"></i>
-			<p>fr</p>
-		</a>
-		<a>
-			<i class="fa fa-comment-o" aria-hidden="true"></i>
-			<i class="fa fa-comment active" aria-hidden="true"></i>
-			<p>en</p>
-		</a>
+		</nav>
+		<nav class="lang">
+			<ul>
+				<li>
+					<a routerLink="/fr" >
+						<i class="fa fa-comment" aria-hidden="true"></i>
+						<span>fr</span>
+					</a>
+				</li>
+				<li>
+					<a routerLink="/en">
+						<i class="fa fa-comment" aria-hidden="true"></i>
+						<span>en</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
 	</div>
-</nav>
+</section>
