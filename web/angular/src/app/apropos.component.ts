@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import { ContentService } from './content.service';
 
-import { Text } from './text';
 
 
 
@@ -22,12 +21,21 @@ export class AproposComponent implements OnInit  {
 
     ngOnInit() {
         var lang:string = this._route.snapshot.data['locale'];
-        this._contentService.loadPageContent(lang, 'apropos')
-            .subscribe(res => {
-                this.text = res;
-                this.isLoading = false;
-            })
-        ;
+        var texts = this._contentService.loadPageContent(lang, 'apropos');
+         if(texts)
+         {
+            texts.subscribe(
+                res2 => {
+                    this.text = res2;
+                    this.isLoading = false;
+                }
+            );
+         }
+         else
+         {
+            this.text = this._contentService.loadPageContentFromCache(lang, 'apropos');
+            this.isLoading = false;
+         }
 
     }
 }

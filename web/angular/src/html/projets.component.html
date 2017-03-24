@@ -4,18 +4,21 @@
         {{ text.title }}
     </h1>
 	<hr />
-	<div *ngFor="let projet of projets; let i = index" class="projet media">
-		<a href="{{ projet.url }}" target="_blank">
-			<div class="media-left">
-				<div>
-					<i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+	<template [ngIf]=" projets.length > 0 ">
+		<div *ngFor="let projet of projets; let i = index" class="projet media">
+			<a href="{{ projet.url }}" target="_blank">
+				<div class="media-left">
+					<div>
+						<i class="fa fa-chevron-right" aria-hidden="true"></i>
+					</div>
+					<img src="assets/images/projets/{{ projet.image }}" />
 				</div>
-				<img src="assets/images/projets/{{ projet.image }}" />
-			</div>
-			<div class="media-body">
-				<h3>{{ projet.title }}</h3>
-				<h4>{{ projet.description }}</h4>
-			</div>
-		</a>
-	</div>
+				<div class="media-body">
+					<h3>{{ (locale == 'fr') ? projet.title : projet.title_en }}</h3>
+					<h4>{{ (locale == 'fr') ? projet.description : projet.description_en }}</h4>
+				</div>
+			</a>
+		</div>
+	</template>
 </div>

@@ -40,6 +40,7 @@
 		
 		.media-left{
 			position:relative;
+			z-index:0;
 			padding:0;
 			
 			
@@ -73,3 +74,96 @@
 		}
 	}
 }
+
+@media screen and (max-width: @width-desktop) {
+	#projets{
+		.projet{
+			display:block;
+			
+			a{
+				&:hover{
+					margin:10px 0;
+					
+					.media-left{
+						img{
+							height: 100px;
+						}
+						div{
+							display: none;
+						}
+					}
+					.media-body{
+						padding-left:10px;
+					
+					}
+					
+				}
+			}
+			
+			.media-left{
+				display:block;
+				width: 100%;
+				margin-bottom:10px;
+				text-align:center;
+			}
+			.media-body{
+				display:block;
+				width: 100%;
+				text-align:center;
+				border-bottom:1px solid @color1;
+				padding-bottom:10px;
+				
+				h4{
+					text-align:justify;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Text } from './text';
+import { Projet } from './Projet';
 
 @Injectable()
 export class ContentService {
@@ -11,6 +11,7 @@ export class ContentService {
     private projectsContentUrl:string = 'http://localhost/portfolio/web/app_dev.php/projets/';
 
     static Texts = {fr: {}, en: {}};
+    static Projets = {fr: {}, en: {}};
 
     constructor(private _http: Http) {}
 
@@ -26,29 +27,50 @@ export class ContentService {
         }
         else
         {
-          new Observable()
-            return new Observable((observer:any) => {
-                observer.next(ContentService.Texts[locale][pageName]);
-            });
+            return false;
         }
     }
 
-    getProjects(locale: string){
-        var url:string = this.projectsContentUrl + locale;
-
-        if(ContentService.Texts[locale]['projets'] == undefined)
+    loadPageContentFromCache (locale: string, pageName: string)
+    {
+        if(ContentService.Texts[locale][pageName] != undefined)
         {
-            return this._http.get(url).map( (res:Response) => {
-                ContentService.Texts[locale]['projets'] = res.json();
-                return ContentService.Texts[locale]['projets'];
+            return ContentService.Texts[locale][pageName];
+        }
+        else
+        {
+            return  false;
+        }
+    }
+
+
+
+
+    getProjects(locale: string){
+        var url2:string = this.projectsContentUrl + locale;
+       
+        if(Object.keys(ContentService.Projets[locale]).length == 0)
+        {
+            return this._http.get(url2).map( (res:Response) => {
+                ContentService.Projets[locale] = res.json();
+                return ContentService.Projets[locale];
             });  
         }
         else
         {
-          new Observable()
-            return new Observable((observer:any) => {
-                observer.next(ContentService.Texts[locale]['projets']);
-            });
+            return false;
+        }
+    }
+
+    getProjectsFromCache (locale: string)
+    {
+        if(ContentService.Projets[locale] != undefined)
+        {
+            return ContentService.Projets[locale];
+        }
+        else
+        {
+            return  false;
         }
     }
 }

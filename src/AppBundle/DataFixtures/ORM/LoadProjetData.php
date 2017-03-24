@@ -42,6 +42,18 @@ class LoadProjetData implements FixtureInterface
 					Telecommunications services, Fiber Optic cable Installations, Network cabling, Security cameras.
 				',
 			),
+			array(
+				"url" => 'http://tactikal1426.com/',
+				"image" => 'tactikal.jpg',
+				"title" => 'Entraînement physique Tactikal 1426',
+				"title_en" => 'Entraînement physique Tactikal 1426',
+				"description" => '
+					Le Tactikal 1426 amène une toute nouvelle ambiance d’entraînement qui vous apportera discipline, force et endurance. Psychologiquement et physiquement, notre centre d’entraînement vous fera atteindre d’autres niveaux en vous permettant de vous dépasser et de constamment pousser vos limites.
+				',
+				"description_en" => '
+					The Tactikal 1426 brings a whole new training atmosphere that will bring you discipline, strength and endurance. Psychologically and physically, our training center allows you to reach other levels by allowing you to overtake and constantly push your limits.
+				',
+			),
 			
 		);
 		

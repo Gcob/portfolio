@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import { ContentService } from './content.service';
 
-import { Text } from './text';
 
 
 @Component({
@@ -21,12 +20,21 @@ export class JoindreComponent  {
 
     ngOnInit() {
         var lang:string = this._route.snapshot.data['locale'];
-        this._contentService.loadPageContent(lang, 'joindre')
-            .subscribe(res => {
-                this.text = res;
-                this.isLoading = false;
-            })
-        ;
+        var texts = this._contentService.loadPageContent(lang, 'joindre');
+         if(texts)
+         {
+            texts.subscribe(
+                res2 => {
+                    this.text = res2;
+                    this.isLoading = false;
+                }
+            );
+         }
+         else
+         {
+            this.text = this._contentService.loadPageContentFromCache(lang, 'joindre');
+            this.isLoading = false;
+         }
 
         
     }
